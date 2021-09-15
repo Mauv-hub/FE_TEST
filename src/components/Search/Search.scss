@@ -1,0 +1,23 @@
+.searchContainer {
+	display: flex;
+	flex-direction: row;
+	margin-right: 2rem;
+
+	input {
+        min-width: 12rem;
+		height: 100%;
+
+		border-color: #8081f2;
+	}
+
+	button {
+		padding: 0.5rem 2rem;
+		height: 100%;
+        cursor: pointer;
+
+		font-size: 1.2rem;
+		color: #8081f2;
+		border-color: #8081f2;
+		background: transparent;
+	}
+}

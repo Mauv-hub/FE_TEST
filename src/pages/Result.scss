@@ -1,0 +1,22 @@
+.resultOuterContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .resultInnerContainer {
+        width: 80%;
+        padding-bottom: 2rem;
+        border-width: 0;
+        border-bottom-width: 1px;
+        border-style: solid;
+        border-color: green;
+
+    }
+    
+    .options {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+}

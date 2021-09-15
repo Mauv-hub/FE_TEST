@@ -1,0 +1,11 @@
+.shContainer {
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+        font-size: 2rem;
+    }
+}
