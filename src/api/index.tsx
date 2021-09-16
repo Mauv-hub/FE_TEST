@@ -10,4 +10,5 @@ export const fetchParentResults = (): Promise<AxiosResponse<TypeParent>> =>
 
 export const fetchChildResults = (
 	name: string
-): Promise<AxiosResponse<TypeChildElement>> => API.get(`/result/${name}`);
+): Promise<AxiosResponse<Array<TypeChildElement>>> =>
+	API.get(`/result/${name}`);

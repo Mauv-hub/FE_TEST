@@ -19,7 +19,7 @@ export const getChildResults = action(
 	async (
 		picked: TypeParentElement,
 		id: number
-	): Promise<TypeChildElement | boolean> => {
+	): Promise<Array<TypeChildElement> | boolean> => {
 		// 만약 기존에 불렀던 값이 존재하면 api를 부르지 않음
 		if (resultStorage.child[id]) return false;
 

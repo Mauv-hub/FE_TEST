@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
 import { getParentResults } from "../action/result";
@@ -10,6 +10,7 @@ import resultStorage from "../storage/result";
 import "./Result.scss";
 import Table from "../components/Table/Table";
 import { toJS } from "mobx";
+import Modal from "../components/Modal/Modal";
 
 const ResultOptions = (): React.ReactElement => {
 	return (
@@ -24,19 +25,35 @@ const ResultOptions = (): React.ReactElement => {
 };
 
 const Result = (): React.ReactElement => {
+	const [showModal, setShowModal] = useState(false);
+
 	useEffect(() => {
 		getParentResults();
 	}, []);
 
 	return (
 		<div className="resultOuterContainer">
+			<Modal
+				show={showModal}
+				setShow={setShowModal}
+				title="선택하신 목록입니다."
+				content={resultStorage.picked}
+			/>
 			<div className="resultInnerContainer">
 				<SubHeader title="Result" options={<ResultOptions />} />
 				<Table
 					titleArray={["Name", "Foxtrot", "Golf"]}
 					targetArray={toJS(resultStorage.parent)}
 					onClick={resultStorage.setPickedParent}
+					subRowAddListener={resultStorage.addPicked}
+					subRowRemoveListener={resultStorage.removePicked}
 				/>
+				<div className="bascketContainer">
+					<FunctionButton
+						text="바구니"
+						onClick={() => setShowModal(true)}
+					/>
+				</div>
 			</div>
 		</div>
 	);

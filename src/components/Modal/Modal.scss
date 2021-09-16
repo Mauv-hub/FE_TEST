@@ -1,0 +1,56 @@
+.modalBackground {
+	top: 0;
+	left: 0;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background: rgba(0, 0, 0, 0.5);
+
+	.modalContainer {
+		width: 80%;
+		height: 80%;
+		padding: 1rem 3rem;
+
+		background: #fff;
+		border-radius: 2rem;
+
+		box-shadow: 1px 1px 10px #000;
+
+		.title {
+			display: flex;
+			justify-content: space-between;
+
+			p {
+				font-size: 1.2rem;
+			}
+
+			.close {
+				cursor: pointer;
+			}
+		}
+
+		.content {
+            height: inherit;
+			overflow-y: auto;
+
+			.nameCategory {
+				.category {
+                    padding: 0 2rem;
+					display: flex;
+					justify-content: space-between;
+				}
+
+				.subRow {
+					padding: 0 2rem;
+					display: flex;
+					justify-content: space-between;
+					flex-direction: row;
+				}
+			}
+		}
+	}
+}

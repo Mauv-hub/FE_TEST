@@ -1,27 +1,73 @@
+@mixin parentRowProperties($clicked: false) {
+	background: transparent;
+	cursor: pointer;
+	
+	@if $clicked {
+		background: cornflowerblue;
+	}
+}
+
+@mixin subRowProperties($clicked: false) {
+	background: transparent;
+	cursor: pointer;
+
+	.subRowText {
+		font-style: oblique;
+	}
+
+	@if $clicked {
+		background: coral;
+	}
+}
+
 .tableContainer {
 	margin: 2rem 0;
 	width: 100%;
-
-	thead {
-		th {
+	height: 80vh;
+	overflow-y: scroll;
+	
+	table {
+		width: 100%;
+		thead {
+			th {
+				padding: 1rem 0;
+	
+				font-size: 1.2rem;
+			}
+		}
+	
+		tbody {
+			height: 100px;
+			.parentRowClicked {
+				@include parentRowProperties($clicked: true);
+			}
+	
+			.parentRow {
+				@include parentRowProperties($clicked: false);
+			}
+	
+			.parentRow:hover {
+				background: cornflowerblue;
+			}
+	
+			.subRowClicked {
+				@include subRowProperties($clicked: true);
+			}
+	
+			.subRow {
+				@include subRowProperties($clicked: false);
+			}
+	
+			.subRow:hover {
+				background: coral;
+			}
+		}
+	
+		td {
 			padding: 1rem 0;
-
-			font-size: 1.2rem;
-		}
-	}
-
-	tbody {
-		tr {
-			cursor: pointer;
+			text-align: center;
 		}
 
-		tr:hover {
-			background: cornflowerblue;
-		}
 	}
 
-	td {
-		padding: 1rem 0;
-		text-align: center;
-	}
 }

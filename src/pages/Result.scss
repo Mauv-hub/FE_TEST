@@ -11,6 +11,11 @@
         border-style: solid;
         border-color: green;
 
+        .bascketContainer {
+            padding: 1rem 0;
+            display: flex;
+            justify-content: flex-end;
+        }
     }
     
     .options {
