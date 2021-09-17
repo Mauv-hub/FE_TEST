@@ -13,7 +13,6 @@ const Table = ({
 	subRowAddListener,
 	subRowRemoveListener,
 }: TypeTableProps): React.ReactElement => {
-	console.log("target", targetArray);
 	return (
 		<div className="tableContainer">
 			<table>

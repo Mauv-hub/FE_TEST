@@ -4,11 +4,17 @@ import "./Button.scss";
 import { TypeFunctionButtonProps, TypeNavButtonProps } from "./types";
 
 export const NavButton = ({
+	id,
 	text,
+	isClicked,
 	onClick,
 }: TypeNavButtonProps): React.ReactElement => {
 	return (
-		<button className="navButton" onClick={onClick}>
+		<button
+			id={id}
+			className={isClicked ? "navButtonClicked" : "navButton"}
+			onClick={onClick}
+		>
 			{text}
 		</button>
 	);

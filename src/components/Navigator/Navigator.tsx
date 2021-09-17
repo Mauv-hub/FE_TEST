@@ -1,22 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { NavButton } from "../Button/Button";
 import "./Navigator.scss";
 
 const Navigator = (): React.ReactElement => {
+	const [clicked, setClicked] = useState("result");
+
 	return (
 		<div className="navContainer">
 			<div className="nav">
 				<div className="buttons">
-					<NavButton text="Alpha" onClick={() => <Link to="" />} />
-					<NavButton text="Bravo" onClick={() => <Link to="" />} />
-					<NavButton text="Charlie" onClick={() => <Link to="" />} />
-					<NavButton text="Delta" onClick={() => <Link to="" />} />
-					<NavButton text="Echo" onClick={() => <Link to="" />} />
 					<NavButton
+						id="alpha"
+						isClicked={Boolean(clicked === "alpha")}
+						text="Alpha"
+						onClick={(e) => {
+							setClicked(e.target.id);
+							return <Link to="" />;
+						}}
+					/>
+					<NavButton
+						id="bravo"
+						isClicked={Boolean(clicked === "bravo")}
+						text="Bravo"
+						onClick={(e) => {
+							setClicked(e.target.id);
+							return <Link to="" />;
+						}}
+					/>
+					<NavButton
+						id="charlie"
+						isClicked={Boolean(clicked === "charlie")}
+						text="Charlie"
+						onClick={(e) => {
+							setClicked(e.target.id);
+							return <Link to="" />;
+						}}
+					/>
+					<NavButton
+						id="delta"
+						isClicked={Boolean(clicked === "delta")}
+						text="Delta"
+						onClick={(e) => {
+							setClicked(e.target.id);
+							return <Link to="" />;
+						}}
+					/>
+					<NavButton
+						id="echo"
+						isClicked={Boolean(clicked === "echo")}
+						text="Echo"
+						onClick={(e) => {
+							setClicked(e.target.id);
+							return <Link to="" />;
+						}}
+					/>
+					<NavButton
+						id="result"
+						isClicked={Boolean(clicked === "result")}
 						text="Result"
-						onClick={() => <Link to="/result" />}
+						onClick={(e) => {
+							setClicked(e.target.id);
+							return <Link to="/result" />;
+						}}
 					/>
 				</div>
 				<div className="info">

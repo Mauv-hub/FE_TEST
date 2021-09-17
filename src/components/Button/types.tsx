@@ -1,6 +1,8 @@
 export interface TypeNavButtonProps {
+	id: string;
 	text: string;
-	onClick: () => void;
+	isClicked: boolean;
+	onClick: (e: any) => void;
 }
 
 export interface TypeFunctionButtonProps {
