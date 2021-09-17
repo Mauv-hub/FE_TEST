@@ -18,6 +18,10 @@ const ResultOptions = (): React.ReactElement => {
 	return (
 		<div className="options">
 			<Search />
+			<FunctionButton
+				text="전체보기"
+				onClick={() => resultStorage.clearSearched()}
+			/>
 		</div>
 	);
 };

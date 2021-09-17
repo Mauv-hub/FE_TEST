@@ -72,6 +72,11 @@ class Result {
 			this.alreadySearchedName.push(text);
 		}
 	};
+
+	clearSearched = () => {
+		this.searchName = "";
+		this.alreadySearchedName = [];
+	};
 }
 
 const resultStorage = new Result();

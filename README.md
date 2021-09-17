@@ -1,6 +1,15 @@
 # FE_TEST
 HITS Frontend 개발자 채용 과제
 
+## Preview
+<p>
+  <img width="600" height="200" src="src/assets/preview1.png">
+  <img width="600" height="200" src="src/assets/preview2.png">
+  <img width="600" height="200" src="src/assets/preview3.png">
+  <img width="600" height="200" src="src/assets/preview4.png">
+  <img width="600" height="200" src="src/assets/preview5.png">
+</p>
+
 ## 스택
 1. React js (SPA)
 2. react-router-dom
@@ -63,6 +72,7 @@ HITS Frontend 개발자 채용 과제
 5. 선택 항목의 삭제는 메인 Result `Table`에서 선택하는 것을 통해 삭제할 수도 있고 `바구니` 안에서 삭제할 수도 있도록 해 UX를 향상시킴
 6. 사용자가 **전체삭제**시 확인절차를 거치도록 하여 우발적인 삭제를 방지함
 7. 각각의 `NavigationButton`이 눌리면 강조 표시가 되도록 함
+8. 사용자가 검색 뒤 **전체보기**로 돌아가고 싶은 경우 돌아갈 수 있는 버튼 추가
 
 ## 확인된 버그 (Solved)
 1. `Parent Row`를 닫게 되면 기존의 선택됐던 `css`들이 초기화 됨(그러나 데이터는 유지 됨) => `Modal` 내 전체 초기화를 통해 해결 예정
@@ -96,6 +106,7 @@ addPicked() | 선택된 `Sub Row`를 저장하는 메서드
 removePicked() | 선택된 `Sub Row`를 제거하는 메서드
 clearPicked() | 선택했던 모든 항목들을 제거
 setSearched() |`searchName`과 `alreadySearchedName`에 값을 할당
+clearSearched() |`searchName`과 `alreadySearchedName`을 초기화
 
 action | Explanation
 ------------ | -------------
