@@ -7,6 +7,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 2;
 
 	background: rgba(0, 0, 0, 0.5);
 
@@ -42,6 +43,9 @@
                     padding: 0 2rem;
 					display: flex;
 					justify-content: space-between;
+				
+					// ? 여백 맞추기용
+					margin-right: 6rem;
 				}
 
 				.subRow {
@@ -51,6 +55,11 @@
 					flex-direction: row;
 				}
 			}
+		}
+
+		.confirm {
+			display: flex;
+			justify-content: flex-end;
 		}
 	}
 }

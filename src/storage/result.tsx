@@ -1,11 +1,13 @@
 import { makeAutoObservable } from "mobx";
-import { getChildResults } from "../action/result";
+import { getChildResults as apiGetChildResults } from "../action/result";
 import {
+	TypeAlreadySearched,
 	TypeChild,
 	TypeChildElement,
 	TypeParent,
 	TypeParentElement,
 	TypePicked,
+	TypeSearched,
 } from "./resultTypes";
 
 class Result {
@@ -14,30 +16,28 @@ class Result {
 	pickedParent = [] as TypeParent;
 	// ? Child row (Sub row)
 	child = {} as TypeChild;
-	//pickedChild = [] as Array<TypeChildElement>;
 	// ? Picked from spcific parent row
 	picked = {} as TypePicked;
+	// ? Searched name
+	searchName = "" as TypeSearched;
+	alreadySearchedName = [] as TypeAlreadySearched;
 
 	constructor() {
 		makeAutoObservable(this);
 	}
 
 	// ? Select specipick row
-	setPickedParent = (picked: TypeParentElement, index: number) => {
+	setPickedParent = (picked: TypeParentElement, name: string) => {
 		this.pickedParent = [picked];
-		getChildResults(picked, index);
+		apiGetChildResults(picked, name);
 	};
-
-	// setPickedChild = (picked: TypeChildElement) => {
-	// 	this.pickedChild = [...this.pickedChild, picked];
-	// };
 
 	// ? Get all results
 	getParentResults = (results: TypeParent) => {
 		this.parent = [...results];
 	};
 
-	getChildResults = (id: number, results: Array<TypeChildElement>) => {
+	getChildResults = (id: string, results: Array<TypeChildElement>) => {
 		this.child[id] = results;
 	};
 
@@ -48,13 +48,29 @@ class Result {
 			return;
 		}
 		this.picked[name] = [...this.picked[name], row];
-		//console.log(toJS(this.picked));
 	};
 
 	removePicked = (name: string, row: TypeChildElement) => {
 		const target = this.picked[name].findIndex((e) => e[0] === row[0]);
 		this.picked[name].splice(target, 1);
-		//console.log(toJS(this.picked));
+		if (!this.picked[name].length) {
+			delete this.picked[name];
+		}
+	};
+
+	clearPicked = () => {
+		this.picked = {};
+	};
+
+	// ? Set earched text
+	setSearched = (text: string) => {
+		this.searchName = text;
+
+		// ? 기존에 검색한 내역을 상기시켜 주기 위한 UX
+		const hasValue = this.alreadySearchedName.includes(text);
+		if (!hasValue) {
+			this.alreadySearchedName.push(text);
+		}
 	};
 }
 

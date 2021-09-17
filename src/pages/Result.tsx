@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
@@ -11,15 +12,12 @@ import "./Result.scss";
 import Table from "../components/Table/Table";
 import { toJS } from "mobx";
 import Modal from "../components/Modal/Modal";
+import Loader from "../components/Loader/Loader";
 
 const ResultOptions = (): React.ReactElement => {
 	return (
 		<div className="options">
 			<Search />
-			<FunctionButton
-				text="다운로드"
-				onClick={() => alert("download clicked!")}
-			/>
 		</div>
 	);
 };
@@ -41,13 +39,29 @@ const Result = (): React.ReactElement => {
 			/>
 			<div className="resultInnerContainer">
 				<SubHeader title="Result" options={<ResultOptions />} />
-				<Table
-					titleArray={["Name", "Foxtrot", "Golf"]}
-					targetArray={toJS(resultStorage.parent)}
-					onClick={resultStorage.setPickedParent}
-					subRowAddListener={resultStorage.addPicked}
-					subRowRemoveListener={resultStorage.removePicked}
-				/>
+				{!resultStorage.parent.length ? (
+					<Loader />
+				) : (
+					<Table
+						titleArray={["Name", "Foxtrot", "Golf"]}
+						targetArray={
+							resultStorage.searchName
+								? toJS(
+										resultStorage.parent.filter(
+											(par) =>
+												par[0].trim().toLowerCase() ===
+												resultStorage.searchName
+													.trim()
+													.toLowerCase()
+										)
+								  )
+								: toJS(resultStorage.parent)
+						}
+						onClick={resultStorage.setPickedParent}
+						subRowAddListener={resultStorage.addPicked}
+						subRowRemoveListener={resultStorage.removePicked}
+					/>
+				)}
 				<div className="bascketContainer">
 					<FunctionButton
 						text="바구니"

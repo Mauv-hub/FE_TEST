@@ -9,7 +9,7 @@ const Row = observer(
 	({
 		onClick,
 		parentRow,
-		index,
+		name,
 		subRowAddListener,
 		subRowRemoveListener,
 	}: TypeRowProps) => {
@@ -20,7 +20,7 @@ const Row = observer(
 				<tr
 					className={!isClicked ? "parentRow" : "parentRowClicked"}
 					onClick={() => {
-						onClick(parentRow, index);
+						onClick(parentRow, name);
 						setIsClicked((prevState) => !prevState);
 					}}
 				>
@@ -41,8 +41,8 @@ const Row = observer(
 					))}
 				</tr>
 				{isClicked &&
-					resultStorage.child[index] &&
-					resultStorage.child[index].map((sub, i) => {
+					resultStorage.child[name] &&
+					resultStorage.child[name].map((sub, i) => {
 						return (
 							<SubRow
 								key={i}

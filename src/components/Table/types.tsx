@@ -7,14 +7,14 @@ import {
 export interface TypeTableProps {
 	titleArray: Array<string>;
 	targetArray: TypeParent;
-	onClick: (target: TypeParentElement, index: number) => void;
+	onClick: (target: TypeParentElement, name: string) => void;
 	subRowAddListener: (name: string, row: TypeChildElement) => void;
 	subRowRemoveListener: (name: string, row: TypeChildElement) => void;
 }
 
 export interface TypeRowProps {
-	onClick: (target: TypeParentElement, index: number) => void;
-	index: number;
+	onClick: (target: TypeParentElement, name: string) => void;
+	name: string;
 	parentRow: TypeParentElement;
 	subRowAddListener: (name: string, row: TypeChildElement) => void;
 	subRowRemoveListener: (name: string, row: TypeChildElement) => void;

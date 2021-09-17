@@ -3,7 +3,8 @@ import { observer } from "mobx-react-lite";
 
 import "./Modal.scss";
 import { TypeModalProps } from "./types";
-import { toJS } from "mobx";
+import { FunctionButton } from "../Button/Button";
+import resultStorage from "../../storage/result";
 
 const Modal = ({
 	show,
@@ -12,6 +13,15 @@ const Modal = ({
 	content,
 }: TypeModalProps): React.ReactElement => {
 	const names = Object.keys(content);
+
+	const onClickDeleteAll = () => {
+		const r = confirm("정말 삭제하시겠습니까? 되돌릴 수 없습니다!");
+
+		if (r === true) {
+			resultStorage.clearPicked();
+			alert("모두 삭제되었습니다.");
+		}
+	};
 
 	return (
 		<div
@@ -52,6 +62,19 @@ const Modal = ({
 													{parseFloat(sub[2]).toFixed(
 														5
 													)}
+													<FunctionButton
+														margin="0 0 0 2rem"
+														padding="0 1rem"
+														fontSize="1rem"
+														background="red"
+														text="삭제"
+														onClick={() =>
+															resultStorage.removePicked(
+																name,
+																sub
+															)
+														}
+													/>
 												</p>
 											</div>
 										);
@@ -60,6 +83,18 @@ const Modal = ({
 							);
 						})
 					)}
+				</div>
+				<div className="confirm">
+					<FunctionButton
+						margin="0 3rem 0 0"
+						text="다운로드"
+						onClick={() => alert("다운로드 중입니다...")}
+					/>
+					<FunctionButton
+						text="전체삭제"
+						background="red"
+						onClick={() => onClickDeleteAll()}
+					/>
 				</div>
 			</div>
 		</div>

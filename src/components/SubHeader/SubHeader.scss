@@ -1,9 +1,14 @@
 .shContainer {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 10px;
+    background: #fff;
     padding: 0 2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    z-index: 1;
 
     .title {
         font-size: 2rem;
